@@ -28,6 +28,7 @@ COPY utils ./utils
 COPY tools ./tools
 COPY data ./data
 COPY system_prompt.txt ./system_prompt.txt
+COPY run_server.py ./run_server.py
 
 RUN chown -R agent:agent /app
 
@@ -38,4 +39,4 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
     CMD python -c "import os, urllib.request; urllib.request.urlopen(f\"http://localhost:{os.environ.get('PORT', '8000')}/health\")" || exit 1
 
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["python", "run_server.py"]
