@@ -5,3 +5,7 @@ langchain-openai
 langgraph
 python-dotenv
 unidecode
+pydantic==2.9.0
+pyjwt==2.9.0
+redis==5.1.0
+psutil==6.0.0
